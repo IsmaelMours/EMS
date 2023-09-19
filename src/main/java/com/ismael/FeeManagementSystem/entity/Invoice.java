@@ -2,7 +2,8 @@ package com.ismael.FeeManagementSystem.entity;
 
 import jakarta.persistence.*;
 
-import javax.security.auth.Subject;
+import com.ismael.FeeManagementSystem.entity.Subject;
+
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class Invoice {
 
     public Invoice() {
     }
+
 
     public Invoice(Long invoiceId, Date issueDate, Date dueDate, double totalAmount, String status, Student student, List<Subject> subjects, List<Payment> payments) {
         this.invoiceId = invoiceId;
