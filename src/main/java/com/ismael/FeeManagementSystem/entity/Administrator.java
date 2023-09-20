@@ -8,6 +8,8 @@ public class Administrator {
     private String firstName;
     private String lastName;
     private String gender;
+
+    @Column(name = "")
     private String contactInformation; // You can use an embedded class for contact info
     private String username;
     private String password; // Hashed and salted for security

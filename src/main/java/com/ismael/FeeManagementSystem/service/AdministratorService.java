@@ -1,9 +1,9 @@
 package com.ismael.FeeManagementSystem.service;
 
+
 import com.ismael.FeeManagementSystem.entity.Administrator;
 import com.ismael.FeeManagementSystem.repository.AdministratorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,21 +12,15 @@ import java.util.Optional;
 @Service
 public class AdministratorService {
     private final AdministratorRepository administratorRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AdministratorService(
-            AdministratorRepository administratorRepository,
-            PasswordEncoder passwordEncoder
-    ) {
+    public AdministratorService(AdministratorRepository administratorRepository) {
         this.administratorRepository = administratorRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     // Create a new administrator account
     public Administrator createAdministrator(Administrator administrator) {
-        // Encode the administrator's password before saving to the database
-        administrator.setPassword(passwordEncoder.encode(administrator.getPassword()));
+        // You can save the password as it is without encoding
         return administratorRepository.save(administrator);
     }
 
@@ -44,9 +38,9 @@ public class AdministratorService {
             administratorToUpdate.setContactInformation(updatedAdministrator.getContactInformation());
             administratorToUpdate.setUsername(updatedAdministrator.getUsername());
 
-            // Encode the updated password if provided
+            // Update the password if provided
             if (updatedAdministrator.getPassword() != null) {
-                administratorToUpdate.setPassword(passwordEncoder.encode(updatedAdministrator.getPassword()));
+                administratorToUpdate.setPassword(updatedAdministrator.getPassword());
             }
 
             // Save the updated administrator
@@ -68,4 +62,3 @@ public class AdministratorService {
         return administratorRepository.findAll();
     }
 }
-

@@ -8,6 +8,8 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
+    private String username; // Add username field
+    private String password; // Add password field
     private String firstName;
     private String lastName;
     private String gender;
@@ -24,7 +26,8 @@ public class Student {
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String gender, String dateOfBirth, String contactInformation, String address) {
+    public Student( String firstName, String lastName, String gender, String dateOfBirth, String contactInformation, String address) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -34,6 +37,9 @@ public class Student {
     }
 
     // Getters and setters
+
+
+
     public Long getStudentId() {
         return studentId;
     }
